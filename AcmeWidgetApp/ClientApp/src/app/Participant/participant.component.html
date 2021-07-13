@@ -1,0 +1,95 @@
+<div class="container">
+
+  <form [formGroup]="EmpForm" (ngSubmit)="this[EventValue]()">
+
+    <h3>Employee Registration</h3>
+    <div class="row">
+
+      <table class="table">
+        <tr>
+          <td>First Name</td>
+          <td>
+            <!--<input type="hidden" formControlName="empId">-->
+            <input type="text" formControlName="FirstName">
+            <div *ngIf="submitted && EmpForm.controls.FirstName.errors" class="text-danger">
+              <div *ngIf="EmpForm.controls.FirstName.errors.required">First Name is required</div>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Last Name</td>
+          <td>
+            <input type="text" formControlName="LastName">
+            <div *ngIf="submitted && EmpForm.controls.LastName.errors" class="text-danger">
+              <div *ngIf="EmpForm.controls.LastName.errors.required">Last Name is required</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Activity</td>
+          <td>
+            <select formControlName="ActivityId" (change)="filterActivity($event.target.value)">
+              <option value="0">--Select--</option>
+              <option *ngFor="let d of allactivity" value={{d.ActivityId}}>{{d.ActivityName}} </option>
+            </select>
+            <div *ngIf="submitted && EmpForm.controls.ActivityId.errors" class="text-danger">
+              <div *ngIf="EmpForm.controls.ActivityId.errors.required || value== 0">Activity is required</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td>
+            <input type="text" formControlName="Email">
+            <div *ngIf="submitted && EmpForm.controls.Email.errors" class="text-danger">
+              <div *ngIf="EmpForm.controls.Email.errors.required">Email is required</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Phone Number</td>
+          <td>
+            <input type="text" formControlName="PhoneNumber">
+            <div *ngIf="submitted && EmpForm.controls.PhoneNumber.errors" class="text-danger">
+              <div *ngIf="EmpForm.controls.PhoneNumber.errors.required">PhoneNumber is required</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Comments</td>
+          <td>
+            <input type="text" formControlName="Comments">
+            <!--<div *ngIf="submitted && EmpForm.controls.Comments.errors" class="text-danger">
+              Comment is required
+            </div>-->
+
+          </td>
+        </tr>
+        <tr>
+
+          <td colspan="2">
+            <button type="submit" class="btn btn-primary">{{EventValue}}</button>
+          </td>
+        </tr>
+
+      </table>
+    </div>
+
+    <div *ngIf="displayrelated" class="row"> Other Participants for this activity:
+      <table class="table table-striped">
+        <tr>
+          <td>Name</td>
+          <td>Email</td>
+        </tr>
+
+        <tr *ngFor="let d of relatedParticipants">
+          <td>{{d.FirstName +" " +d.LastName}}</td>
+          <td>{{d.Email}}</td>
+        </tr>
+      </table>
+    </div>
+  </form>
+
+</div>
+

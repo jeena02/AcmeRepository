@@ -1,0 +1,38 @@
+<head>
+  
+</head>
+<body class='background'>
+  <div>
+    <div id="homediv">
+      <h1 id="homeh11">Acme Widget Company</h1>
+
+      <div class='container-fluid'>
+        <div class="row" style="padding: 20px;">
+         
+        </div>
+        <owl-carousel [options]="SlideOptions" [items]="images" [carouselClasses]="['owl-theme', 'sliding']">
+          <div class="item" *ngFor="let img of Images">
+            <div style="align-content: center">
+              <img id="owl-carousel-style"  src={{img}} />
+            </div>
+          </div>
+        </owl-carousel>
+      </div>
+
+
+      <p>Welcome to Acme Widget Activity Registration Page. Our company is planning various team building activities conducted throughout the year.
+      From Scavenger Hunt to Board Game Tournements, we have got everything in our list. </p>
+      <div id="divAdv">ADVENTURE AWAITS!</div>
+      <p>Register today. Click on Register to get started</p>
+      <button type="submit" class="btn btn-primary" (click)="btnClick();">Register</button>
+
+
+    </div>
+    <div>
+      <table>
+        
+      </table>
+    </div>
+  </div>
+</body>
+
